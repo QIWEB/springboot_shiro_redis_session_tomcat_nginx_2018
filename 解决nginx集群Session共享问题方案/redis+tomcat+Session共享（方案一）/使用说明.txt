@@ -1,0 +1,9 @@
+1）将commons-pool2-2.3.jar、jedis-2.7.2.jar、tomcat8_redis_session-0.0.1-SNAPSHOT.jar拷贝到tomcat的lib下
+2）新增tomcat context.xml配置：
+
+    <Valve className="com.demo.redis_session.RedisSessionHandlerValve" />  
+    <Manager className="com.demo.redis_session.RedisSessionManager"  
+        host="127.0.0.1"  <!--redis所在服务器地址-->
+        port="6379"       <!--redis端口-->
+        database="0"      <!--redis存储session数据库id-->
+        maxInactiveInterval="60" /> <!--redis连接超时时间（单位为秒），如果web.xml有配置时间，实际上仍以web.xml为准-->
